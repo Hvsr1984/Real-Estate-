@@ -1,0 +1,12 @@
+# Node modules and build files
+node_modules/
+.vercel/
+.deploy_cache.db
+.dex_cache.db
+
+# Agent files & IDE caches
+.gemini/
+.agents/
+*.log
+.DS_Store
+Thumbs.db

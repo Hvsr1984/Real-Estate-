@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+# Sitemap coordinates
+Sitemap: https://luxehaven-luxury.web.app/sitemap.xml

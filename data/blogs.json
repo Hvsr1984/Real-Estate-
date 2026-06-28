@@ -1,0 +1,35 @@
+[
+    {
+        "id": "blog-1",
+        "title": "The Evolution of Minimalist Architecture in Luxury Estates",
+        "category": "Design",
+        "readTime": "6 min read",
+        "author": "Marcus Thorne",
+        "date": "June 15, 2026",
+        "coverImage": "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80",
+        "summary": "How modern structural glass, raw slate facades, and cantilevered spans are redefining architectural prestige and spatial luxury in 2026.",
+        "content": "<p>Minimalism has evolved far beyond empty white spaces. In the context of luxury residential architecture, today's minimalism is a meticulous study of raw, organic textures, structural engineering marvels, and frameless boundary systems. The modern luxury client seeks invisibility: houses that blend with their mountain ranges or coastlines, where double-height structural glass wall dividers drop flush into sub-basement pockets at the push of a button.</p><p>Key details of current developments involve utilizing carbon-fiber-reinforced beams. This allows architects to project rooflines up to eight meters without vertical support pillars, delivering completely unobstructed landscape viewports. Materials like slate-grey slate stones, board-formed sand-blasted concretes, and dark luxury brass accents dominate the finishes, shifting the aesthetic from clinical white to warm organic sophistication.</p><p>Additionally, biophilic designs play a massive role. Indoor atrium gardens with micro-climate control systems bring nature straight into double-height galleries, blurring boundaries between living quarters and the wild surrounding environments.</p>"
+    },
+    {
+        "id": "blog-2",
+        "title": "Structuring Real Estate Portfolios for High-Yield Rental Returns",
+        "category": "Finance",
+        "readTime": "8 min read",
+        "author": "Sophia Vance",
+        "date": "May 28, 2026",
+        "coverImage": "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=800&q=80",
+        "summary": "A deep dive into cross-border tax structures, high-end fractional equity, and capital allocation frameworks for class-A luxury properties.",
+        "content": "<p>As global capital markets navigate shifts, prime luxury real estate continues to serve as an indispensable pillar of generational wealth preservation. Successful real estate portfolio building relies heavily on geographical diversification and tax optimization. Investing in core luxury assets in primary cities like Miami, Los Angeles, London, and Tokyo provides a safe cushion against inflation, alongside stable rental yield profiles ranging from 5% to 7%.</p><p>Using offshore trusts, specialized holding entities, and tax-advantage schemes remains standard practice for ultra-high-net-worth buyers. Furthermore, analyzing localized growth drivers is paramount. For instance, luxury properties situated within 1 kilometer of international financial nodes or marine harbor coves experience on average a 14% higher capital appreciation compared to inland equivalents.</p><p>Ultimately, selecting high-quality assets with custom architectural pedigree ensures asset liquidity. Premium estates designed by world-renowned studios retain buyers easily even during market consolidations, preserving capital equity.</p>"
+    },
+    {
+        "id": "blog-3",
+        "title": "Understanding the Luxury Real Estate Market Trends in 2026",
+        "category": "Market",
+        "readTime": "5 min read",
+        "author": "Elena Rostova",
+        "date": "April 12, 2026",
+        "coverImage": "https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=800&q=80",
+        "summary": "How smart microgrids, private heliports, and AI-managed climate envelopes are influencing elite property values.",
+        "content": "<p>The definitions of luxury have transformed. While high-grade marbles and premium appliances remain standard additions, elite buyers now demand absolute autonomy. Properties featuring self-sustaining energy microgrids, solar glass shingles, and private well water filtration systems are command premium valuations of up to 25% over standard grid-tied properties.</p><p>Additionally, custom security integrations, double-gated compounds, air purification systems, and integrated medical rooms are rising rapidly in demand. Private helicopter pads, yacht slips, and electric fleet chargers are no longer optional extras, but absolute requirements. In a volatile world, the home is shifting from a symbol of prestige to the ultimate autonomous fortress.</p>"
+    }
+]

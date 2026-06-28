@@ -1,0 +1,63 @@
+/* css/variables.css - LuxeHaven Global Design Tokens V2 */
+
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
+:root {
+    /* Fonts */
+    --font-heading: 'Space Grotesk', sans-serif;
+    --font-body: 'Plus Jakarta Sans', sans-serif;
+
+    /* Theme Colors - Refined Light Mode Default */
+    --bg-primary: #FAF9F5;      /* Warm Travertine Canvas */
+    --bg-secondary: #FFFFFF;    /* Clean White Panel */
+    --text-primary: #0F172A;    /* Deep Obsidian Slate */
+    --text-secondary: #576475;  /* Balanced Muted Gray */
+    --accent-gold: #C9A96E;     /* Agency Gold Accent */
+    --accent-brass: #D6B47E;    /* Dynamic Muted Brass */
+    --slate-dark: #0F172A;
+    --slate-light: #F1F4F9;
+
+    /* Semantic States */
+    --success: #10B981;
+    --error: #EF4444;
+    --warning: #F59E0B;
+    
+    /* Layout & Spacing */
+    --border-radius-sm: 8px;
+    --border-radius-md: 18px;
+    --border-radius-lg: 24px;
+    --border-radius-xl: 32px;
+    
+    /* Glassmorphism Styles */
+    --glass-bg: rgba(255, 255, 255, 0.45);
+    --glass-border: rgba(255, 255, 255, 0.5);
+    --glass-shadow: rgba(15, 23, 42, 0.04);
+    --glass-blur: 20px;
+    
+    /* Shadows */
+    --shadow-subtle: 0 4px 30px rgba(0, 0, 0, 0.015);
+    --shadow-luxury: 0 20px 80px rgba(15, 23, 42, 0.06);
+
+    /* V3 Motion System - Timing Standards */
+    --transition-fast: 0.2s cubic-bezier(0.16, 1, 0.3, 1);       /* 200ms */
+    --transition-smooth: 0.38s cubic-bezier(0.16, 1, 0.3, 1);    /* 380ms Standard */
+    --transition-slow: 0.9s cubic-bezier(0.16, 1, 0.3, 1);       /* 900ms Reveals */
+    --transition-spring: 0.38s cubic-bezier(0.34, 1.56, 0.64, 1); /* Spring Easing */
+}
+
+/* Dark Mode Theme Overrides */
+[data-theme="dark"] {
+    --bg-primary: #06080C;      /* Deep Obsidian Slate */
+    --bg-secondary: #0D111A;    /* Darktravertine Panel */
+    --text-primary: #F8FAF9;    /* Clean Pearl White */
+    --text-secondary: #8E9CAE;  /* Muted Slate Silver */
+    --slate-light: #161E2E;
+    
+    /* Dark Glassmorphism */
+    --glass-bg: rgba(13, 17, 26, 0.65);
+    --glass-border: rgba(255, 255, 255, 0.06);
+    --glass-shadow: rgba(0, 0, 0, 0.3);
+    
+    --shadow-subtle: 0 4px 30px rgba(0, 0, 0, 0.2);
+    --shadow-luxury: 0 20px 80px rgba(0, 0, 0, 0.45);
+}

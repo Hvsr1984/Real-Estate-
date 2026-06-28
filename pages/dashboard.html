@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>CMS Admin Dashboard | LuxeHaven</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+    <link rel="stylesheet" href="../css/animations.css">
+    
+    <style>
+        /* Dashboard layout */
+        .dashboard-container {
+            display: grid;
+            grid-template-columns: 240px 1fr;
+            min-height: calc(100vh - 80px);
+            margin-top: 80px;
+        }
+
+        .dashboard-sidebar {
+            background-color: var(--bg-secondary);
+            border-right: 1px solid var(--glass-border);
+            padding: 2rem 1.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .sidebar-menu-btn {
+            width: 100%;
+            padding: 1rem;
+            border-radius: var(--border-radius-sm);
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            text-align: left;
+            transition: all var(--transition-fast);
+        }
+
+        .sidebar-menu-btn:hover,
+        .sidebar-menu-btn.active {
+            background-color: var(--accent-gold);
+            color: #111111;
+        }
+
+        .dashboard-content {
+            padding: 3rem;
+            background-color: var(--bg-primary);
+            overflow-y: auto;
+            max-height: calc(100vh - 80px);
+        }
+
+        .dashboard-panel {
+            display: none;
+            flex-direction: column;
+            gap: 2.5rem;
+        }
+
+        .dashboard-panel.active {
+            display: flex;
+        }
+
+        /* Metrics grid */
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 2rem;
+        }
+
+        .metric-card {
+            padding: 2rem;
+            border-radius: var(--border-radius-lg);
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .metric-card span {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            color: var(--text-secondary);
+            letter-spacing: 0.1em;
+        }
+
+        .metric-card h3 {
+            font-family: var(--font-heading);
+            font-size: 2rem;
+            font-weight: 600;
+            color: var(--accent-gold);
+        }
+
+        /* CRUD table style */
+        .crud-table-wrapper {
+            background-color: var(--bg-secondary);
+            border-radius: var(--border-radius-lg);
+            border: 1px solid var(--glass-border);
+            overflow: hidden;
+        }
+
+        .crud-table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+        }
+
+        .crud-table th,
+        .crud-table td {
+            padding: 1.25rem 1.5rem;
+            border-bottom: 1px solid var(--glass-border);
+        }
+
+        .crud-table th {
+            font-family: var(--font-heading);
+            font-weight: 500;
+            color: var(--accent-gold);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            font-size: 0.85rem;
+        }
+
+        .crud-table td {
+            font-size: 0.9rem;
+        }
+
+        .crud-actions {
+            display: flex;
+            gap: 0.75rem;
+        }
+
+        .crud-btn-edit {
+            color: var(--success);
+            font-size: 1.1rem;
+            cursor: pointer;
+        }
+
+        .crud-btn-delete {
+            color: var(--error);
+            font-size: 1.1rem;
+            cursor: pointer;
+        }
+
+        /* Sliding drawer for Add/Edit forms */
+        .crud-form-drawer {
+            position: fixed;
+            top: 0;
+            right: -550px;
+            width: 550px;
+            height: 100%;
+            background-color: var(--bg-secondary);
+            box-shadow: -10px 0 40px rgba(0, 0, 0, 0.2);
+            z-index: 1050;
+            display: flex;
+            flex-direction: column;
+            transition: right var(--transition-smooth);
+        }
+
+        .crud-form-drawer.active {
+            right: 0;
+        }
+
+        .crud-form-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 2rem;
+            border-bottom: 1px solid var(--slate-light);
+        }
+
+        .crud-form-body {
+            flex-grow: 1;
+            padding: 2rem;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .crud-form-footer {
+            padding: 2rem;
+            border-top: 1px solid var(--slate-light);
+            display: flex;
+            gap: 1rem;
+        }
+
+        /* Lead card */
+        .lead-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .lead-card {
+            padding: 2rem;
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 2rem;
+            border-radius: var(--border-radius-lg);
+        }
+
+        .lead-info-col {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .lead-meta-row {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .lead-meta-row i {
+            color: var(--accent-gold);
+            margin-right: 0.25rem;
+        }
+
+        .lead-msg-row {
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .lead-actions-col {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: flex-end;
+        }
+
+        @media (max-width: 1024px) {
+            .dashboard-container {
+                grid-template-columns: 1fr;
+            }
+            .dashboard-sidebar {
+                flex-direction: row;
+                overflow-x: auto;
+                padding: 1rem;
+            }
+            .sidebar-menu-btn {
+                padding: 0.75rem 1rem;
+                white-space: nowrap;
+                width: auto;
+            }
+            .dashboard-content {
+                padding: 1.5rem;
+                max-height: none;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .crud-form-drawer {
+                width: 100%;
+                right: -100%;
+            }
+            .lead-card {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            .lead-actions-col {
+                align-items: flex-start;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Custom Cursor -->
+    <div class="custom-cursor"></div>
+    <div class="custom-cursor-trail"></div>
+    
+    <div class="noise-overlay"></div>
+
+    <!-- Preloader -->
+    <div class="preloader">
+        <div class="preloader-logo">LUXEHAVEN</div>
+        <div class="preloader-bar-wrapper">
+            <div class="preloader-bar"></div>
+        </div>
+        <div class="preloader-counter">0%</div>
+    </div>
+
+    <!-- Glass Header Navigation -->
+    <header class="main-header">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">LUXE<span>HAVEN</span></a>
+            <nav class="nav-links">
+                <a href="properties.html" class="nav-link">Browse Properties</a>
+                <a href="about.html" class="nav-link">Our Story</a>
+                <a href="agents.html" class="nav-link">Curators</a>
+                <a href="blog.html" class="nav-link">Insights Journal</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+                <a href="dashboard.html" class="nav-link active">Dashboard</a>
+            </nav>
+            <div class="nav-actions">
+                <button class="nav-btn" id="theme-toggle-btn" aria-label="Toggle Theme">
+                    <i class="fa-solid fa-moon"></i>
+                </button>
+                <button class="nav-btn" id="wishlist-toggle-btn" aria-label="Open Wishlist">
+                    <i class="fa-regular fa-heart"></i>
+                    <span class="badge wishlist-count-badge">0</span>
+                </button>
+                <a href="contact.html" class="btn-primary magnetic" style="padding: 0.6rem 1.25rem; font-size: 0.8rem;">Book Viewing</a>
+                <button class="hamburger-btn" aria-label="Open Menu">
+                    <i class="fa-solid fa-bars-staggered"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Navigation Drawer -->
+    <div class="mobile-nav-panel">
+        <i class="fa-solid fa-xmark mobile-nav-close"></i>
+        <div class="mobile-links">
+            <a href="properties.html" class="mobile-link">Browse Properties</a>
+            <a href="about.html" class="mobile-link">Our Story</a>
+            <a href="agents.html" class="mobile-link">Curators</a>
+            <a href="blog.html" class="mobile-link">Insights Journal</a>
+            <a href="contact.html" class="mobile-link">Contact</a>
+            <a href="dashboard.html" class="mobile-link">CMS Dashboard</a>
+        </div>
+    </div>
+
+    <!-- CMS Platform Layout -->
+    <div class="dashboard-container">
+        
+        <!-- Sidebar Navigation Menu -->
+        <aside class="dashboard-sidebar">
+            <button class="sidebar-menu-btn active" data-tab="analytics-panel"><i class="fa-solid fa-chart-line"></i> Analytics</button>
+            <button class="sidebar-menu-btn" data-tab="properties-panel"><i class="fa-solid fa-hotel"></i> Properties CRUD</button>
+            <button class="sidebar-menu-btn" data-tab="leads-panel"><i class="fa-solid fa-inbox"></i> Leads Inbox</button>
+        </aside>
+
+        <!-- Dynamic Content Panels -->
+        <main class="dashboard-content">
+            
+            <!-- PANEL 01: ANALYTICS -->
+            <section class="dashboard-panel active" id="analytics-panel">
+                <div style="display:flex; justify-content:space-between; align-items:center;">
+                    <h2 style="font-family:var(--font-heading); text-transform:uppercase;">Analytics Dashboard</h2>
+                    <span style="font-size:0.8rem; color:var(--text-secondary);"><i class="fa-regular fa-clock"></i> Live Feed</span>
+                </div>
+
+                <div class="metrics-grid">
+                    <div class="glass-panel metric-card">
+                        <span>Total Portfolio Value</span>
+                        <h3 id="stat-portfolio-val">$0M</h3>
+                    </div>
+                    <div class="glass-panel metric-card">
+                        <span>Active Inquiries</span>
+                        <h3 id="stat-leads-count">0</h3>
+                    </div>
+                    <div class="glass-panel metric-card">
+                        <span>Curated Listings</span>
+                        <h3 id="stat-listings-count">0</h3>
+                    </div>
+                    <div class="glass-panel metric-card">
+                        <span>Average Yield ROI</span>
+                        <h3 id="stat-avg-roi">0%</h3>
+                    </div>
+                </div>
+
+                <div class="glass-panel" style="padding: 2.5rem; height: 350px;">
+                    <h4 style="font-family:var(--font-heading); text-transform:uppercase; margin-bottom: 1.5rem;">Listings Capitalization by Type</h4>
+                    <div style="position:relative; height: calc(100% - 3rem); width:100%;">
+                        <canvas id="analytics-chart"></canvas>
+                    </div>
+                </div>
+            </section>
+
+            <!-- PANEL 02: PROPERTIES CRUD -->
+            <section class="dashboard-panel" id="properties-panel">
+                <div style="display:flex; justify-content:space-between; align-items:center;">
+                    <h2 style="font-family:var(--font-heading); text-transform:uppercase;">Manage Listings</h2>
+                    <button class="btn-primary magnetic" id="btn-add-property" style="padding: 0.65rem 1.5rem; font-size: 0.8rem;"><i class="fa-solid fa-plus"></i> Add Property</button>
+                </div>
+
+                <div class="crud-table-wrapper">
+                    <table class="crud-table" id="properties-crud-table">
+                        <thead>
+                            <tr>
+                                <th>Photo</th>
+                                <th>Residence</th>
+                                <th>Location</th>
+                                <th>Price</th>
+                                <th>Type</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="crud-table-tbody">
+                            <!-- Loaded dynamically -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- PANEL 03: LEADS INBOX -->
+            <section class="dashboard-panel" id="leads-panel">
+                <div style="display:flex; justify-content:space-between; align-items:center;">
+                    <h2 style="font-family:var(--font-heading); text-transform:uppercase;">Leads Inbox</h2>
+                    <span style="font-size:0.8rem; color:var(--text-secondary);" id="leads-inbox-counter">0 messages</span>
+                </div>
+
+                <div class="lead-list" id="leads-container">
+                    <!-- Loaded dynamically -->
+                </div>
+            </section>
+
+        </main>
+
+    </div>
+
+    <!-- Sliding Sidebar Form Drawer for Add/Edit CRUD -->
+    <div class="drawer-backdrop" id="crud-backdrop"></div>
+    <div class="crud-form-drawer" id="crud-drawer">
+        <div class="crud-form-header">
+            <h3 id="crud-drawer-title">Add Property</h3>
+            <i class="fa-solid fa-xmark drawer-close-btn" id="crud-drawer-close"></i>
+        </div>
+        <div class="crud-form-body">
+            <form class="booking-form" id="crud-property-form">
+                <input type="hidden" id="crud-prop-id">
+                
+                <div class="booking-input-group">
+                    <label>Residence Title</label>
+                    <input type="text" id="crud-title" placeholder="e.g. Aetheria Penthouse" required>
+                </div>
+                <div class="booking-input-group">
+                    <label>Region City</label>
+                    <select id="crud-city" required>
+                        <option value="Los Angeles">Los Angeles</option>
+                        <option value="Miami">Miami</option>
+                        <option value="Tokyo">Tokyo</option>
+                        <option value="Aspen">Aspen</option>
+                    </select>
+                </div>
+                <div class="booking-input-group">
+                    <label>Full Address</label>
+                    <input type="text" id="crud-location" placeholder="e.g. 90210 Beverly Hills" required>
+                </div>
+                <div class="booking-input-group">
+                    <label>Price ($)</label>
+                    <input type="number" id="crud-price" placeholder="e.g. 8450000" required>
+                </div>
+                <div class="booking-input-group">
+                    <label>Space Type</label>
+                    <select id="crud-type" required>
+                        <option value="Villa">Villa</option>
+                        <option value="Apartment">Apartment</option>
+                        <option value="Plot">Plot (Land)</option>
+                    </select>
+                </div>
+                <div class="booking-input-group">
+                    <label>Status</label>
+                    <select id="crud-status" required>
+                        <option value="Buy">Buy (For Sale)</option>
+                        <option value="Rent">Rent (For Lease)</option>
+                    </select>
+                </div>
+                <div class="booking-input-group">
+                    <label>Bedrooms Count</label>
+                    <input type="number" id="crud-beds" placeholder="e.g. 4" value="4">
+                </div>
+                <div class="booking-input-group">
+                    <label>Bathrooms Count</label>
+                    <input type="number" id="crud-baths" placeholder="e.g. 5" value="5">
+                </div>
+                <div class="booking-input-group">
+                    <label>House Area Size (M²)</label>
+                    <input type="number" id="crud-area" placeholder="e.g. 450" required>
+                </div>
+                <div class="booking-input-group">
+                    <label>Plot Size (HA)</label>
+                    <input type="number" id="crud-plot" placeholder="e.g. 0.12" step="0.01" value="0">
+                </div>
+                <div class="booking-input-group">
+                    <label>Coordinates (Latitude)</label>
+                    <input type="number" id="crud-lat" placeholder="e.g. 34.0784" step="0.0001" required>
+                </div>
+                <div class="booking-input-group">
+                    <label>Coordinates (Longitude)</label>
+                    <input type="number" id="crud-lng" placeholder="e.g. -118.4008" step="0.0001" required>
+                </div>
+                <div class="booking-input-group">
+                    <label>Investment ROI Expected (%)</label>
+                    <input type="number" id="crud-roi" placeholder="e.g. 6.2" step="0.1" value="6.0">
+                </div>
+                <div class="booking-input-group">
+                    <label>Main Image URL</label>
+                    <input type="url" id="crud-image" placeholder="https://images.unsplash.com..." value="https://images.unsplash.com/photo-1613977257363-707ba9348227?auto=format&fit=crop&w=1200&q=80">
+                </div>
+                <div class="booking-input-group">
+                    <label>Residence Description</label>
+                    <textarea id="crud-desc" rows="4" placeholder="Enter high-end description..." required></textarea>
+                </div>
+            </form>
+        </div>
+        <div class="crud-form-footer">
+            <button class="btn-secondary" id="crud-drawer-cancel" style="flex:1; justify-content:center;">Cancel</button>
+            <button class="btn-primary" id="crud-drawer-save" style="flex:1; justify-content:center;">Save Changes <i class="fa-solid fa-floppy-disk"></i></button>
+        </div>
+    </div>
+
+    <!-- Dynamic Wishlist Side Drawer Backdrop -->
+    <div class="drawer-backdrop"></div>
+    <div class="side-drawer" id="wishlist-drawer">
+        <div class="drawer-header">
+            <h3>Saved Portfolio</h3>
+            <i class="fa-solid fa-xmark drawer-close-btn" id="drawer-close-btn"></i>
+        </div>
+        <div class="drawer-content">
+            <!-- Dynamically populated drawer items -->
+        </div>
+        <div class="drawer-footer">
+            <a href="contact.html" class="btn-primary" style="justify-content: center;">Book Collective Tour <i class="fa-solid fa-calendar-check"></i></a>
+        </div>
+    </div>
+
+    <!-- Floating AI Concierge -->
+    <div class="ai-concierge-trigger" aria-label="Open AI Concierge">
+        <i class="fa-solid fa-robot"></i>
+    </div>
+    
+    <div class="ai-chat-window glass-panel">
+        <div class="chat-header">
+            <div class="chat-header-info">
+                <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=100&q=80" alt="Concierge">
+                <div>
+                    <h4>LuxeBot</h4>
+                    <span><i class="fa-solid fa-circle" style="font-size:0.5rem;"></i> Active Butler</span>
+                </div>
+            </div>
+            <i class="fa-solid fa-xmark chat-header-close"></i>
+        </div>
+        <div class="chat-messages">
+            <div class="chat-msg bot">
+                Welcome to the CMS panel. You can ask me to compile financial report statistics or explain how to add new luxury listings.
+            </div>
+        </div>
+        <div class="chat-choices">
+            <button class="chat-choice-btn" data-choice="How do I add a new property?">Add Property Help</button>
+            <button class="chat-choice-btn" data-choice="Tell me the total portfolio value">Portfolio Value</button>
+            <button class="chat-choice-btn" data-choice="How many leads are in the inbox?">Leads count</button>
+        </div>
+        <div class="chat-input-wrapper">
+            <input type="text" id="chat-input-field" placeholder="Ask LuxeBot...">
+            <button class="chat-send-btn"><i class="fa-solid fa-paper-plane"></i></button>
+        </div>
+    </div>
+
+    <!-- Chart JS CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!-- Local scripts -->
+    <script type="module" src="../js/app.js"></script>
+    <script type="module" src="../js/dashboard.js"></script>
+
+</body>
+</html>

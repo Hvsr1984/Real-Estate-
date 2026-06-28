@@ -1,0 +1,47 @@
+[
+    {
+        "id": "agent-1",
+        "name": "Alexander Sterling",
+        "role": "Managing Partner & Lead Curator",
+        "experience": "14+ Years",
+        "phone": "+1 (310) 555-0192",
+        "email": "sterling@luxehaven.com",
+        "image": "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=600&q=80",
+        "specialties": ["Malibu Waterfronts", "Beverly Hills Mansions"],
+        "propertiesCount": 18,
+        "socials": {
+            "instagram": "https://instagram.com/sterling_luxury",
+            "linkedin": "https://linkedin.com/in/alexander-sterling"
+        }
+    },
+    {
+        "id": "agent-2",
+        "name": "Victoria Sinclair",
+        "role": "Director of Commercial & Sky Penthouses",
+        "experience": "10 Years",
+        "phone": "+1 (305) 555-0145",
+        "email": "sinclair@luxehaven.com",
+        "image": "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=600&q=80",
+        "specialties": ["Miami Sky Penthouses", "Commercial Hospitality Sites"],
+        "propertiesCount": 12,
+        "socials": {
+            "instagram": "https://instagram.com/sinclair_penthouses",
+            "linkedin": "https://linkedin.com/in/victoria-sinclair"
+        }
+    },
+    {
+        "id": "agent-3",
+        "name": "Marcus Chen",
+        "role": "Chief Investment Analyst & Plot Advisor",
+        "experience": "8 Years",
+        "phone": "+81 (3) 5555-0812",
+        "email": "chen@luxehaven.com",
+        "image": "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=600&q=80",
+        "specialties": ["Luxury Plots", "Cross-Border Tax Advisory"],
+        "propertiesCount": 9,
+        "socials": {
+            "instagram": "https://instagram.com/marcus_luxplots",
+            "linkedin": "https://linkedin.com/in/marcus-chen"
+        }
+    }
+]
