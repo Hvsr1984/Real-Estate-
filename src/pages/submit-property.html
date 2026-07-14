@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Submit Listing portfolio | LuxeHaven</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../styles/style.css">
+    <link rel="stylesheet" href="../styles/responsive.css">
+    <link rel="stylesheet" href="../styles/animations.css">
+    
+    <style>
+        .submit-container {
+            max-width: 1200px;
+            margin: 120px auto 60px auto;
+            padding: 0 1.5rem;
+            display: grid;
+            grid-template-columns: 1.8fr 1fr;
+            gap: 3rem;
+        }
+
+        .submission-form-card {
+            padding: 3rem;
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .form-section-title {
+            font-family: var(--font-heading);
+            text-transform: uppercase;
+            font-size: 1.1rem;
+            letter-spacing: 0.05em;
+            color: var(--accent-gold);
+            border-bottom: 1px solid var(--glass-border);
+            padding-bottom: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .form-grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        .form-grid-3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.25rem;
+        }
+
+        .form-input-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .form-input-group label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+
+        .form-input-group input,
+        .form-input-group select,
+        .form-input-group textarea {
+            padding: 0.8rem 1rem;
+            border-radius: var(--border-radius-sm);
+            border: 1px solid var(--glass-border);
+            background: var(--bg-secondary);
+            color: var(--text-primary);
+            font-size: 0.9rem;
+            outline: none;
+            transition: border var(--transition-fast);
+        }
+
+        .form-input-group input:focus,
+        .form-input-group select:focus,
+        .form-input-group textarea:focus {
+            border-color: var(--accent-gold);
+        }
+
+        /* Drag and drop upload styles */
+        .drop-zone {
+            border: 2px dashed var(--glass-border);
+            border-radius: var(--border-radius-lg);
+            padding: 3rem 1rem;
+            text-align: center;
+            background: var(--bg-primary);
+            cursor: pointer;
+            transition: all var(--transition-fast);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .drop-zone:hover,
+        .drop-zone.dragover {
+            border-color: var(--accent-gold);
+            background: var(--bg-secondary);
+        }
+
+        .drop-zone i {
+            font-size: 2.5rem;
+            color: var(--accent-gold);
+        }
+
+        .drop-zone p {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+
+        .preview-grid {
+            display: flex;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+            margin-top: 1rem;
+        }
+
+        /* AI helper cards styles */
+        .ai-assistant-card {
+            padding: 2.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            position: sticky;
+            top: 120px;
+        }
+
+        .ai-assistant-card h4 {
+            font-family: var(--font-heading);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: #FFF;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-size: 1.15rem;
+        }
+
+        .ai-assistant-card p {
+            font-size: 0.85rem;
+            line-height: 1.6;
+            color: var(--text-secondary);
+        }
+
+        .progress-bar-wrapper {
+            margin-top: 0.75rem;
+            background: var(--slate-light);
+            border-radius: 4px;
+            overflow: hidden;
+            height: 6px;
+            display: none;
+        }
+
+        .progress-bar {
+            width: 0%;
+            height: 100%;
+            background: var(--accent-gold);
+            transition: width 0.2s ease;
+        }
+
+        @media (max-width: 1024px) {
+            .submit-container {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            .ai-assistant-card {
+                position: static;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Custom Cursor -->
+    <div class="custom-cursor"></div>
+    <div class="custom-cursor-trail"></div>
+
+    <div class="noise-overlay"></div>
+
+    <!-- Navigation Header -->
+    <header class="main-header">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">LUXE<span>HAVEN</span></a>
+            <nav class="nav-links">
+                <a href="properties.html" class="nav-link">Browse Properties</a>
+                <a href="about.html" class="nav-link">Our Story</a>
+                <a href="agents.html" class="nav-link">Curators</a>
+                <a href="blog.html" class="nav-link">Insights Journal</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+                <a href="dashboard.html" class="nav-link">Dashboard</a>
+            </nav>
+            <div class="nav-actions">
+                <button class="nav-btn" id="theme-toggle-btn" aria-label="Toggle Theme">
+                    <i class="fa-solid fa-moon"></i>
+                </button>
+                <button class="nav-btn" id="wishlist-toggle-btn" aria-label="Open Wishlist">
+                    <i class="fa-regular fa-heart"></i>
+                    <span class="badge wishlist-count-badge">0</span>
+                </button>
+                <a href="contact.html" class="btn-primary magnetic" style="padding: 0.6rem 1.25rem; font-size: 0.8rem;">Book Viewing</a>
+                <button class="hamburger-btn" aria-label="Open Menu">
+                    <i class="fa-solid fa-bars-staggered"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Menu Drawer -->
+    <div class="mobile-nav-panel">
+        <i class="fa-solid fa-xmark mobile-nav-close"></i>
+        <div class="mobile-links">
+            <a href="properties.html" class="mobile-link">Browse Properties</a>
+            <a href="about.html" class="mobile-link">Our Story</a>
+            <a href="agents.html" class="mobile-link">Curators</a>
+            <a href="blog.html" class="mobile-link">Insights Journal</a>
+            <a href="contact.html" class="mobile-link">Contact</a>
+            <a href="dashboard.html" class="mobile-link">CMS Dashboard</a>
+        </div>
+    </div>
+
+    <!-- Page Body Grid Layout -->
+    <div class="submit-container">
+        
+        <!-- Left: Submission Form Form -->
+        <main class="glass-panel submission-form-card">
+            
+            <div>
+                <h2 style="font-family:var(--font-heading); text-transform:uppercase; margin-bottom:0.5rem; letter-spacing:-0.02em;">Submit Luxury Residence</h2>
+                <p style="font-size:0.9rem; color:var(--text-secondary);">Register your luxury estate into LuxeHaven curation reviews directory.</p>
+            </div>
+
+            <form id="sp-submission-form" style="display:flex; flex-direction:column; gap:2.5rem;">
+                
+                <!-- Security Spam bot honeypot field -->
+                <input type="text" id="sp-bot-trap" style="display:none;" tabindex="-1" autocomplete="off">
+
+                <!-- SECTION 01: OWNER DETAILS -->
+                <div>
+                    <h3 class="form-section-title">Owner Coordinates</h3>
+                    <div class="form-grid-2">
+                        <div class="form-input-group">
+                            <label>Owner Name</label>
+                            <input type="text" id="sp-owner-name" placeholder="Lord / Lady Sterling" required>
+                        </div>
+                        <div class="form-input-group">
+                            <label>Email Address</label>
+                            <input type="email" id="sp-owner-email" placeholder="client@domain.com" required>
+                        </div>
+                    </div>
+                    <div class="form-grid-2" style="margin-top:1.25rem;">
+                        <div class="form-input-group">
+                            <label>Phone Coordinates</label>
+                            <input type="tel" id="sp-owner-phone" placeholder="+1 (310) 555-0000" required>
+                        </div>
+                        <div class="form-input-group">
+                            <label>WhatsApp Link</label>
+                            <input type="tel" id="sp-owner-whatsapp" placeholder="+1 (310) 555-0000">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SECTION 02: BASIC PROPERTIES SPECS -->
+                <div>
+                    <h3 class="form-section-title">Residence Specifications</h3>
+                    <div class="form-grid-2">
+                        <div class="form-input-group">
+                            <label>Property Title</label>
+                            <input type="text" id="sp-title" placeholder="e.g. The Planetarium Villa" required>
+                        </div>
+                        <div class="form-input-group">
+                            <label>Space Type</label>
+                            <select id="sp-type" required>
+                                <option value="Villa">Villa</option>
+                                <option value="Apartment">Apartment/Penthouse</option>
+                                <option value="Commercial">Commercial Suite</option>
+                                <option value="Land">Land Plot</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-grid-3" style="margin-top:1.25rem;">
+                        <div class="form-input-group">
+                            <label>Target Status</label>
+                            <select id="sp-status" required>
+                                <option value="Buy">For Purchase (Buy)</option>
+                                <option value="Rent">For Lease (Rent)</option>
+                            </select>
+                        </div>
+                        <div class="form-input-group">
+                            <label>Price (USD)</label>
+                            <input type="number" id="sp-price" placeholder="12500000" required>
+                        </div>
+                        <div class="form-input-group">
+                            <label>Construction Status</label>
+                            <select id="sp-construction" required>
+                                <option value="Ready">Ready Listing</option>
+                                <option value="Under Construction">Under Construction</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SECTION 03: DETAILED MEASURES -->
+                <div class="form-grid-3">
+                    <div class="form-input-group">
+                        <label>Bedrooms</label>
+                        <input type="number" id="sp-bedrooms" min="0" value="4" required>
+                    </div>
+                    <div class="form-input-group">
+                        <label>Bathrooms</label>
+                        <input type="number" id="sp-bathrooms" min="0" value="5" required>
+                    </div>
+                    <div class="form-input-group">
+                        <label>Garages/Parking</label>
+                        <input type="number" id="sp-parking" min="0" value="3" required>
+                    </div>
+                    <div class="form-input-group">
+                        <label>Area (Sq Meters)</label>
+                        <input type="number" id="sp-area" placeholder="520" required>
+                    </div>
+                    <div class="form-input-group">
+                        <label>Plot Size (Acres)</label>
+                        <input type="number" id="sp-plot-size" placeholder="0.25" step="0.01">
+                    </div>
+                    <div class="form-input-group">
+                        <label>Year Built</label>
+                        <input type="number" id="sp-year" min="1900" max="2030" value="2026">
+                    </div>
+                </div>
+
+                <!-- SECTION 04: GEOLOCATION COORDINATES -->
+                <div>
+                    <h3 class="form-section-title">Location Picker & Coordinates</h3>
+                    <div class="form-input-group">
+                        <label>Street Address Search</label>
+                        <input type="text" id="sp-address" placeholder="e.g. 9540 Wilshire Blvd, Beverly Hills" required>
+                    </div>
+                    <div class="form-grid-2" style="margin-top:1.25rem;">
+                        <div class="form-input-group">
+                            <label>City Region</label>
+                            <input type="text" id="sp-city" placeholder="Los Angeles" required>
+                        </div>
+                        <div class="form-input-group">
+                            <label>State / Province</label>
+                            <input type="text" id="sp-state" placeholder="CA" required>
+                        </div>
+                    </div>
+                    <div class="form-grid-3" style="margin-top:1.25rem;">
+                        <div class="form-input-group">
+                            <label>Country</label>
+                            <input type="text" id="sp-country" placeholder="United States" required>
+                        </div>
+                        <div class="form-input-group">
+                            <label>Postal Code</label>
+                            <input type="text" id="sp-postal-code" placeholder="90210" required>
+                        </div>
+                    </div>
+                    <div class="form-grid-2" style="margin-top:1.25rem;">
+                        <div class="form-input-group">
+                            <label>Latitude</label>
+                            <input type="text" id="sp-latitude" placeholder="34.0522" required>
+                        </div>
+                        <div class="form-input-group">
+                            <label>Longitude</label>
+                            <input type="text" id="sp-longitude" placeholder="-118.2437" required>
+                        </div>
+                    </div>
+                    
+                    <div id="submit-location-map" style="width:100%; height:260px; border-radius:var(--border-radius-lg); border:1px solid var(--glass-border); margin-top:1.5rem;"></div>
+                </div>
+
+                <!-- SECTION 05: AMENITIES SELECTION -->
+                <div>
+                    <h3 class="form-section-title">Amenities Curations</h3>
+                    <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(180px, 1fr)); gap:1rem;">
+                        <label style="display:flex; align-items:center; gap:0.5rem; font-size:0.85rem; color:var(--text-secondary);">
+                            <input type="checkbox" class="sp-amenity-checkbox" value="Infinity Pool"> Infinity Pool
+                        </label>
+                        <label style="display:flex; align-items:center; gap:0.5rem; font-size:0.85rem; color:var(--text-secondary);">
+                            <input type="checkbox" class="sp-amenity-checkbox" value="Wine Cellar"> Wine Cellar
+                        </label>
+                        <label style="display:flex; align-items:center; gap:0.5rem; font-size:0.85rem; color:var(--text-secondary);">
+                            <input type="checkbox" class="sp-amenity-checkbox" value="Private Spa"> Private Spa
+                        </label>
+                        <label style="display:flex; align-items:center; gap:0.5rem; font-size:0.85rem; color:var(--text-secondary);">
+                            <input type="checkbox" class="sp-amenity-checkbox" value="Smart Automation"> Smart Automation
+                        </label>
+                        <label style="display:flex; align-items:center; gap:0.5rem; font-size:0.85rem; color:var(--text-secondary);">
+                            <input type="checkbox" class="sp-amenity-checkbox" value="Home Cinema"> Home Cinema
+                        </label>
+                        <label style="display:flex; align-items:center; gap:0.5rem; font-size:0.85rem; color:var(--text-secondary);">
+                            <input type="checkbox" class="sp-amenity-checkbox" value="Beach Access"> Beach Access
+                        </label>
+                        <label style="display:flex; align-items:center; gap:0.5rem; font-size:0.85rem; color:var(--text-secondary);">
+                            <input type="checkbox" class="sp-amenity-checkbox" value="Chef Kitchen"> Chef Kitchen
+                        </label>
+                        <label style="display:flex; align-items:center; gap:0.5rem; font-size:0.85rem; color:var(--text-secondary);">
+                            <input type="checkbox" class="sp-amenity-checkbox" value="Private Garage"> Private Garage
+                        </label>
+                    </div>
+                </div>
+
+                <!-- SECTION 06: MEDIA UPLOADER -->
+                <div>
+                    <h3 class="form-section-title">Media coordinates</h3>
+                    
+                    <div class="drop-zone" id="sp-image-drop-zone">
+                        <i class="fa-solid fa-cloud-arrow-up"></i>
+                        <div>
+                            <h4 style="color:#FFF; font-size:0.95rem; margin-bottom:0.25rem;">Drag & drop property images</h4>
+                            <p>Supports WebP, JPEG, PNG formats (Max file size 5MB)</p>
+                        </div>
+                        <input type="file" id="sp-image-file-input" multiple style="display:none;" accept="image/*">
+                    </div>
+
+                    <div class="progress-bar-wrapper" id="sp-upload-progress-wrapper">
+                        <div style="display:flex; justify-content:space-between; font-size:0.75rem; color:var(--text-secondary); margin-bottom:0.25rem;">
+                            <span id="sp-upload-progress-label">Compressing images...</span>
+                        </div>
+                        <div class="progress-bar" id="sp-upload-progress-bar"></div>
+                    </div>
+
+                    <div class="preview-grid" id="sp-images-preview-grid"></div>
+
+                    <div class="form-grid-2" style="margin-top:1.5rem;">
+                        <div class="form-input-group">
+                            <label>Video Tour Link (Vimeo / Youtube)</label>
+                            <input type="url" id="sp-video" placeholder="https://youtube.com/watch?v=...">
+                        </div>
+                        <div class="form-input-group">
+                            <label>360 Virtual Tour Link</label>
+                            <input type="url" id="sp-360" placeholder="https://virtualtour.com/...">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SECTION 07: EDITORIAL INFO & SEO METADATA -->
+                <div>
+                    <h3 class="form-section-title">Editorial Listing Copy</h3>
+                    <div class="form-input-group">
+                        <label>Property Description</label>
+                        <textarea id="sp-description" rows="6" placeholder="Bespoke write-up of structural assets and architectural integrity..." required></textarea>
+                    </div>
+                    <div class="form-input-group" style="margin-top:1.25rem;">
+                        <label>Bullet Highlights (One per line)</label>
+                        <textarea id="sp-highlights" rows="4" placeholder="SAOTA architectural masterpiece&#10;Travertine stone columns&#10;Private express lift entry" required></textarea>
+                    </div>
+                    <div class="form-grid-2" style="margin-top:1.25rem;">
+                        <div class="form-input-group">
+                            <label>SEO Meta Title</label>
+                            <input type="text" id="sp-seo-title" placeholder="The Planetarium Villa | Beverly Hills Portfolio">
+                        </div>
+                        <div class="form-input-group">
+                            <label>SEO Meta Description</label>
+                            <input type="text" id="sp-seo-description" placeholder="A masterpiece of glass and steel in Beverly Hills. Features double infinity pools.">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SUBMIT ACTIONS -->
+                <div style="display:flex; flex-direction:column; gap:1.25rem; border-top:1px solid var(--glass-border); padding-top:2rem;">
+                    <label style="display:flex; align-items:center; gap:0.5rem; font-size:0.85rem; color:var(--text-secondary); cursor:pointer;">
+                        <input type="checkbox" id="sp-captcha-verify" required>
+                        I verify that I am human (Turnstile validation check)
+                    </label>
+                    <button type="submit" class="btn-primary magnetic" style="justify-content:center; padding:1rem; font-weight:600; text-transform:uppercase;">Submit Property for Review <i class="fa-solid fa-circle-check"></i></button>
+                </div>
+
+            </form>
+        </main>
+
+        <!-- Right: AI Assistant Widgets panel -->
+        <aside style="display:flex; flex-direction:column; gap:2.5rem;">
+            <div class="glass-panel ai-assistant-card" style="border-color:rgba(201, 169, 110, 0.3);">
+                <h4><i class="fa-solid fa-wand-magic-sparkles" style="color:var(--accent-gold);"></i> LuxeHaven AI Assistant</h4>
+                <p>
+                    LuxeHaven integrates deep generative learning to draft editorial descriptions, calculate investment ROI metrics, and vision-classify uploaded images to automate checklist tagging.
+                </p>
+                <hr style="border-color:var(--glass-border); margin:0.5rem 0;">
+                <button class="btn-secondary" id="sp-ai-write-btn" style="width:100%; justify-content:center;"><i class="fa-solid fa-pen-nib"></i> Generate Listing Details</button>
+                <button class="btn-secondary" id="sp-ai-analyze-btn" style="width:100%; justify-content:center;"><i class="fa-solid fa-eye"></i> Analyze Cover Image</button>
+            </div>
+        </aside>
+
+    </div>
+
+    <!-- Dynamic Wishlist Drawer -->
+    <div class="drawer-backdrop"></div>
+    <div class="side-drawer" id="wishlist-drawer">
+        <div class="drawer-header">
+            <h3>Saved Portfolio</h3>
+            <i class="fa-solid fa-xmark drawer-close-btn" id="drawer-close-btn"></i>
+        </div>
+        <div class="drawer-content"></div>
+        <div class="drawer-footer">
+            <a href="contact.html" class="btn-primary" style="justify-content: center;">Book Collective Tour <i class="fa-solid fa-calendar-check"></i></a>
+        </div>
+    </div>
+
+    <!-- CDNs -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+
+    <!-- Local scripts -->
+    <script type="module">
+        import { AppController } from '../controllers/AppController.js';
+        import { SubmitController } from '../controllers/SubmitController.js';
+        
+        document.addEventListener('DOMContentLoaded', () => {
+            const app = new AppController();
+            app.init();
+
+            const submit = new SubmitController();
+            submit.init();
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,79 @@
+[
+    {
+        "id": "dlf",
+        "name": "DLF Limited",
+        "logo": "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=150&h=150&q=80",
+        "rating": 4.9,
+        "establishedYear": 1946,
+        "headquarters": "Gurgaon, Haryana",
+        "projectsCompleted": 150,
+        "projectsOngoing": 12,
+        "overview": "DLF is India's largest publicly listed real estate company, with a track record of over 75 years of luxury residential developments, notably defining the modern skyline of Gurgaon with ultra-luxury golf course communities."
+    },
+    {
+        "id": "lodha",
+        "name": "Lodha Group",
+        "logo": "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?auto=format&fit=crop&w=150&h=150&q=80",
+        "rating": 4.8,
+        "establishedYear": 1980,
+        "headquarters": "Mumbai, Maharashtra",
+        "projectsCompleted": 90,
+        "projectsOngoing": 18,
+        "overview": "Lodha Group (Macrotech Developers) is synonymous with ultra-luxury skyscrapers and premium branded residences, engineering iconic architectural landmarks like the World Towers and Lodha Altamount in Mumbai."
+    },
+    {
+        "id": "prestige",
+        "name": "Prestige Group",
+        "logo": "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=150&h=150&q=80",
+        "rating": 4.8,
+        "establishedYear": 1986,
+        "headquarters": "Bangalore, Karnataka",
+        "projectsCompleted": 210,
+        "projectsOngoing": 25,
+        "overview": "Prestige Group has shaped the sky-lines of South India across residential, commercial, and retail sectors, delivering award-winning integrated townships like Prestige Lakeside Habitat and high-end retail hubs like UB City."
+    },
+    {
+        "id": "godrej",
+        "name": "Godrej Properties",
+        "logo": "https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?auto=format&fit=crop&w=150&h=150&q=80",
+        "rating": 4.7,
+        "establishedYear": 1990,
+        "headquarters": "Mumbai, Maharashtra",
+        "projectsCompleted": 80,
+        "projectsOngoing": 32,
+        "overview": "Godrej Properties brings the Godrej Group philosophy of innovation, sustainability, and trust to the real estate sector, creating wellness-focused luxury homes and green townships across India."
+    },
+    {
+        "id": "sobha",
+        "name": "Sobha Limited",
+        "logo": "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=150&h=150&q=80",
+        "rating": 4.9,
+        "establishedYear": 1995,
+        "headquarters": "Bangalore, Karnataka",
+        "projectsCompleted": 120,
+        "projectsOngoing": 15,
+        "overview": "Sobha is India's only backward-integrated real estate developer, known for setting the absolute benchmark in construction quality, structural engineering, and precision craftsmanship."
+    },
+    {
+        "id": "tata",
+        "name": "Tata Housing",
+        "logo": "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=150&h=150&q=80",
+        "rating": 4.8,
+        "establishedYear": 1984,
+        "headquarters": "Mumbai, Maharashtra",
+        "projectsCompleted": 60,
+        "projectsOngoing": 8,
+        "overview": "A subsidiary of the legendary Tata Group, Tata Housing focuses on creating value-driven luxury residences and sustainable communities built on the foundations of trust, ethics, and architectural excellence."
+    },
+    {
+        "id": "embassy",
+        "name": "Embassy Group",
+        "logo": "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=150&h=150&q=80",
+        "rating": 4.8,
+        "establishedYear": 1993,
+        "headquarters": "Bangalore, Karnataka",
+        "projectsCompleted": 55,
+        "projectsOngoing": 6,
+        "overview": "Embassy Group is a pioneer in luxury residential villas and high-end IT tech parks, delivering international-standard luxury spaces like Embassy Lake Terraces and luxury hospitality hubs."
+    }
+]

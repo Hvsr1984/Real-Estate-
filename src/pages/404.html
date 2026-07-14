@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>404 Residence Not Found | LuxeHaven</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../styles/style.css">
+    <link rel="stylesheet" href="../styles/responsive.css">
+    <link rel="stylesheet" href="../styles/animations.css">
+</head>
+<body>
+
+    <!-- Custom Cursor -->
+    <div class="custom-cursor"></div>
+    <div class="custom-cursor-trail"></div>
+    
+    <div class="noise-overlay"></div>
+
+    <!-- Sticky Header -->
+    <header class="main-header" style="background:var(--glass-bg); backdrop-filter:blur(var(--glass-blur));">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">LUXE<span>HAVEN</span></a>
+            <nav class="nav-links">
+                <a href="properties.html" class="nav-link">Browse Properties</a>
+                <a href="about.html" class="nav-link">Our Story</a>
+                <a href="agents.html" class="nav-link">Curators</a>
+                <a href="blog.html" class="nav-link">Insights Journal</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+                <a href="dashboard.html" class="nav-link">Dashboard</a>
+            </nav>
+            <div class="nav-actions">
+                <button class="nav-btn" id="theme-toggle-btn" aria-label="Toggle Theme">
+                    <i class="fa-solid fa-moon"></i>
+                </button>
+                <button class="nav-btn" id="wishlist-toggle-btn" aria-label="Open Wishlist">
+                    <i class="fa-regular fa-heart"></i>
+                    <span class="badge wishlist-count-badge">0</span>
+                </button>
+                <a href="contact.html" class="btn-primary magnetic" style="padding: 0.6rem 1.25rem; font-size: 0.8rem;">Book Viewing</a>
+                <button class="hamburger-btn" aria-label="Open Menu">
+                    <i class="fa-solid fa-bars-staggered"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Drawer Menu -->
+    <div class="mobile-nav-panel">
+        <i class="fa-solid fa-xmark mobile-nav-close"></i>
+        <div class="mobile-links">
+            <a href="properties.html" class="mobile-link">Browse Properties</a>
+            <a href="about.html" class="mobile-link">Our Story</a>
+            <a href="agents.html" class="mobile-link">Curators</a>
+            <a href="blog.html" class="mobile-link">Insights Journal</a>
+            <a href="contact.html" class="mobile-link">Contact</a>
+            <a href="dashboard.html" class="mobile-link">CMS Dashboard</a>
+        </div>
+    </div>
+
+    <!-- Error Screen -->
+    <main style="display:flex; flex-direction:column; align-items:center; justify-content:center; min-height:85vh; text-align:center; padding: 2rem;">
+        
+        <div class="fade-up-trigger active" style="display:flex; flex-direction:column; gap:1.5rem; align-items:center;">
+            <span style="font-family:var(--font-heading); font-size:1.5rem; color:var(--accent-gold); font-weight:700; letter-spacing:0.2em;">ERROR CODE 404</span>
+            <h1 style="font-size:clamp(3rem, 10vw, 8rem); text-transform:uppercase; font-weight:700; line-height:1.0; margin-bottom:1rem;">LANDMARK<br>NOT FOUND</h1>
+            <p style="color:var(--text-secondary); max-width:420px; font-size:0.95rem; line-height:1.6; margin-bottom:1.5rem;">
+                The spatial coordinate index you are navigating toward does not exist or has been archived from our luxury listings catalog.
+            </p>
+            <a href="properties.html" class="btn-primary magnetic">Return to Collection <i class="fa-solid fa-arrow-left-long"></i></a>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer style="background-color: #05070C; border-top: 1px solid rgba(255, 255, 255, 0.08); padding: 4rem 0; color: #FFFFFF;">
+        <div class="container" style="display: flex; justify-content: space-between; align-items: center; font-size: 0.8rem; color: #64748B;">
+            <p>&copy; 2026 LuxeHaven. Designed and engineered by senior agency curators. All rights reserved.</p>
+            <p>Designed in Switzerland</p>
+        </div>
+    </footer>
+
+    <!-- CDNs -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+
+    <!-- Local scripts -->
+    <script type="module" src="../app.js"></script>
+
+</body>
+</html>

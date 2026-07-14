@@ -1,0 +1,47 @@
+[
+    {
+        "id": "agent-1",
+        "name": "Aarav Sharma",
+        "role": "Lead Luxury Advisor & Partner",
+        "experience": "14+ Years",
+        "phone": "+91 98200 12345",
+        "email": "aarav@luxehaven.in",
+        "image": "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=600&q=80",
+        "specialties": ["Worli Sea Face Penthouses", "Lodha Luxury Developments"],
+        "propertiesCount": 18,
+        "socials": {
+            "instagram": "https://instagram.com/aarav_luxury",
+            "linkedin": "https://linkedin.com/in/aarav-sharma"
+        }
+    },
+    {
+        "id": "agent-2",
+        "name": "Ananya Reddy",
+        "role": "Director of North India Portfolios",
+        "experience": "10 Years",
+        "phone": "+91 99100 54321",
+        "email": "ananya@luxehaven.in",
+        "image": "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=600&q=80",
+        "specialties": ["DLF Camellias Sky Penthouse", "Lutyens' Delhi Bungalows"],
+        "propertiesCount": 12,
+        "socials": {
+            "instagram": "https://instagram.com/ananya_penthouses",
+            "linkedin": "https://linkedin.com/in/ananya-reddy"
+        }
+    },
+    {
+        "id": "agent-3",
+        "name": "Kabir Mehta",
+        "role": "Senior Consultant (Villas & Land Plots)",
+        "experience": "8 Years",
+        "phone": "+91 98450 98765",
+        "email": "kabir@luxehaven.in",
+        "image": "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=600&q=80",
+        "specialties": ["Goa Coastal Mansions", "Bangalore Lakeside Townships"],
+        "propertiesCount": 9,
+        "socials": {
+            "instagram": "https://instagram.com/kabir_villas",
+            "linkedin": "https://linkedin.com/in/kabir-mehta"
+        }
+    }
+]
