@@ -15,7 +15,7 @@ export class LocalStorageAdapter extends DatabaseAdapter {
         let existingProps = localStorage.getItem(propKey);
         if (existingProps) {
             // Self-healing check: clean up US demo data or older database versions if found
-            if (existingProps.includes('Beverly Hills') || existingProps.includes('Miami') || existingProps.includes('Tokyo') || !existingProps.includes('prop-10')) {
+            if (existingProps.includes('Beverly Hills') || existingProps.includes('Miami') || existingProps.includes('Tokyo') || !existingProps.includes('photo-1599661046289-e31897846e41')) {
                 localStorage.removeItem(propKey);
                 localStorage.removeItem(builderKey);
                 localStorage.removeItem('wishlist');

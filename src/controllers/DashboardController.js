@@ -235,16 +235,16 @@ export class DashboardController {
 
             html += `
                 <tr data-id="${item.id}">
-                    <td style="width:30px;"><input type="checkbox" class="sub-row-chk" data-id="${item.id}"></td>
-                    <td><strong>${item.title}</strong><div style="font-size:0.75rem; color:var(--text-secondary);">${item.type}</div></td>
-                    <td>${item.city}</td>
-                    <td>${formattedPrice}</td>
-                    <td>
+                    <td style="width:30px;" data-label="Select"><input type="checkbox" class="sub-row-chk" data-id="${item.id}"></td>
+                    <td data-label="Residence"><strong>${item.title}</strong><div style="font-size:0.75rem; color:var(--text-secondary);">${item.type}</div></td>
+                    <td data-label="Region">${item.city}</td>
+                    <td data-label="Price">${formattedPrice}</td>
+                    <td data-label="Owner">
                         <div style="font-size:0.8rem; font-weight:600;">${item.ownerName}</div>
                         <div style="font-size:0.7rem; color:var(--text-secondary);">${item.email}</div>
                     </td>
-                    <td><span class="badge" style="background:${this.getBadgeColor(item.status)}; color:#FFF;">${item.status}</span></td>
-                    <td>
+                    <td data-label="Status"><span class="badge" style="background:${this.getBadgeColor(item.status)}; color:#FFF;">${item.status}</span></td>
+                    <td data-label="Actions">
                         <div class="crud-actions">
                             <i class="fa-solid fa-eye view-details-btn" data-id="${item.id}" title="Review Details" style="cursor:pointer; color:var(--accent-gold);"></i>
                             ${item.status === 'Pending' ? `
@@ -507,13 +507,13 @@ export class DashboardController {
                 
                 html += `
                     <tr data-id="${item.id}">
-                        <td><img src="${thumb}" style="width:60px; height:45px; object-fit:cover; border-radius:4px;"></td>
-                        <td><strong>${item.title}</strong><div style="font-size:0.75rem; color:var(--text-secondary);">${item.propertyType || item.type || 'N/A'}</div></td>
-                        <td>${item.locality || item.location}, ${item.city}</td>
-                        <td style="color:var(--accent-gold); font-weight:600;">${formattedPrice}</td>
-                        <td>${item.propertyType || item.type || 'N/A'}</td>
-                        <td><span class="badge" style="background:#10B981; color:#FFF;">Approved</span></td>
-                        <td>
+                        <td data-label="Image"><img src="${thumb}" style="width:60px; height:45px; object-fit:cover; border-radius:4px;"></td>
+                        <td data-label="Residence"><strong>${item.title}</strong><div style="font-size:0.75rem; color:var(--text-secondary);">${item.propertyType || item.type || 'N/A'}</div></td>
+                        <td data-label="Location">${item.locality || item.location}, ${item.city}</td>
+                        <td data-label="Price" style="color:var(--accent-gold); font-weight:600;">${formattedPrice}</td>
+                        <td data-label="Type">${item.propertyType || item.type || 'N/A'}</td>
+                        <td data-label="Status"><span class="badge" style="background:#10B981; color:#FFF;">Approved</span></td>
+                        <td data-label="Actions">
                             <div class="crud-actions">
                                 <i class="fa-solid fa-pen-to-square edit-property-btn" data-id="${item.id}" title="Edit Property" style="cursor:pointer; color:var(--success); font-size:1.1rem; margin-right:8px;"></i>
                                 <i class="fa-solid fa-trash delete-property-btn" data-id="${item.id}" title="Delete Property" style="cursor:pointer; color:var(--error); font-size:1.1rem;"></i>

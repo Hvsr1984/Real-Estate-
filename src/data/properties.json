@@ -409,5 +409,46 @@
             "restaurant": [{"name": "Kamala Mills Dining Zone", "distance": "600m"}]
         },
         "agentId": "agent-2"
+    },
+    {
+        "id": "prop-11",
+        "title": "The Rajmahal Palace Suites",
+        "builderId": "tata",
+        "city": "Jaipur",
+        "locality": "C-Scheme, Jaipur",
+        "coordinates": [26.9010, 75.8010],
+        "propertyType": "Villa",
+        "bhk": 5,
+        "area": 8200,
+        "plotSize": 0.45,
+        "price": 240000000,
+        "rentPrice": 0,
+        "status": "Buy",
+        "moderationStatus": "Approved",
+        "possessionStatus": "Ready",
+        "featured": true,
+        "verified": true,
+        "reraNumber": "OLX-RAJASTHAN-JPR-773",
+        "description": "Exquisite heritage-styled luxury palace suite in C-Scheme, Jaipur. Restored to imperial perfection with custom marble floors, historic chandeliers, private courtyards, swimming pool, and traditional royal arches.",
+        "images": [
+            "https://images.unsplash.com/photo-1599661046289-e31897846e41?auto=format&fit=crop&w=1200&q=80",
+            "https://images.unsplash.com/photo-1598977123418-45f04b01d4ac?auto=format&fit=crop&w=1200&q=80"
+        ],
+        "panoramaUrl": "https://pannellum.org/images/alma.jpg",
+        "videoUrl": "https://player.vimeo.com/external/435674703.sd.mp4?s=7f3261a84fcc57f443b35581177651a7008cfc29&profile_id=165&oauth2_token_id=57447761",
+        "amenities": ["Heritage Court", "Private Pool", "Royal Arches", "Valet Service", "Banquet Hall"],
+        "investmentScore": 9.4,
+        "luxuryScore": 9.9,
+        "rentalYield": 4.8,
+        "roi": 8.0,
+        "connectivityScore": 9.1,
+        "lifestyleScore": 9.8,
+        "nearby": {
+            "metro": [{"name": "Jaipur Metro Civil Lines", "distance": "1.1km"}],
+            "school": [{"name": "St. Xavier's School", "distance": "1.5km"}],
+            "hospital": [{"name": "Santokba Durlabhji Hospital", "distance": "2.4km"}],
+            "restaurant": [{"name": "The Rajput Room", "distance": "300m"}]
+        },
+        "agentId": "agent-1"
     }
 ]
