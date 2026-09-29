@@ -76,27 +76,89 @@ function initPreloader() {
     const bar = document.querySelector('.preloader-bar');
     const counter = document.querySelector('.preloader-counter');
     
-    if (!preloader) return;
+    if (!preloader) {
+        initScrollReveals();
+        return;
+    }
+
+    const dismissPreloader = () => {
+        preloader.classList.add('fade-out');
+        initScrollReveals();
+    };
+
+    // 1. Skip immediately if user prefers reduced motion
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        dismissPreloader();
+        return;
+    }
+
+    // 2. Skip on subsequent page navigations within the same session
+    if (sessionStorage.getItem('luxehaven_preloader_seen')) {
+        dismissPreloader();
+        return;
+    }
+
+    sessionStorage.setItem('luxehaven_preloader_seen', 'true');
 
     let progress = 0;
-    const duration = 1200; // 1.2s loading simulation
-    const intervalTime = 15;
-    const step = 100 / (duration / intervalTime);
+    let criticalLoaded = false;
+    let isDismissed = false;
+
+    // Wait only for critical assets: fonts ready and hero poster image
+    const criticalPromises = [];
+    if (document.fonts && document.fonts.ready) {
+        criticalPromises.push(document.fonts.ready);
+    }
+    const heroPoster = document.querySelector('.hero-video[poster]');
+    if (heroPoster && heroPoster.getAttribute('poster')) {
+        criticalPromises.push(new Promise((resolve) => {
+            const img = new Image();
+            img.src = heroPoster.getAttribute('poster');
+            img.onload = resolve;
+            img.onerror = resolve;
+        }));
+    }
+
+    Promise.all(criticalPromises).then(() => {
+        criticalLoaded = true;
+    }).catch(() => {
+        criticalLoaded = true;
+    });
+
+    const targetTime = 1600; // Finish in ~1.6s
+    const intervalTime = 20;
+    const increment = 100 / (targetTime / intervalTime);
 
     const timer = setInterval(() => {
-        progress += step;
+        if (progress < 90) {
+            progress += increment;
+        } else if (criticalLoaded && progress < 100) {
+            progress += increment * 2;
+        }
+
         if (progress >= 100) {
             progress = 100;
             clearInterval(timer);
-            setTimeout(() => {
-                preloader.classList.add('fade-out');
-                // Trigger scroll reveals
-                initScrollReveals();
-            }, 300);
+            if (!isDismissed) {
+                isDismissed = true;
+                setTimeout(dismissPreloader, 200);
+            }
         }
-        if (bar) bar.style.width = `${progress}%`;
-        if (counter) counter.textContent = `${Math.floor(progress)}%`;
+
+        if (bar) bar.style.width = `${Math.min(100, progress)}%`;
+        if (counter) counter.textContent = `${Math.floor(Math.min(100, progress))}%`;
     }, intervalTime);
+
+    // 3. Safety timeout fallback: Guarantee preloader never hangs beyond 2.5s
+    setTimeout(() => {
+        if (!isDismissed) {
+            isDismissed = true;
+            clearInterval(timer);
+            if (bar) bar.style.width = '100%';
+            if (counter) counter.textContent = '100%';
+            setTimeout(dismissPreloader, 100);
+        }
+    }, 2500);
 }
 
 /* ==========================================================================
