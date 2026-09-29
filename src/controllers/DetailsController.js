@@ -635,7 +635,7 @@ export class DetailsController {
                 await bookingService.createBooking(payload);
                 await analyticsService.trackAction(this.propertyId, 'bookingClicks');
                 
-                showToast("Viewing appointment booked successfully!", "success");
+                showToast("Viewing appointment recorded (Demo Mode) — Saved to session & dashboard!", "success");
                 form.reset();
             } catch (err) {
                 showToast(err.message, "error");
