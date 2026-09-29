@@ -197,6 +197,13 @@
     width: 100%;
     height: 100%;
     z-index: -2;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.hero-video-container.poster-fallback {
+    background-image: url('../assets/images/hero-poster.jpg');
 }
 
 .hero-video {
@@ -204,6 +211,15 @@
     height: 100%;
     object-fit: cover;
     filter: brightness(0.92) contrast(1.1); /* Increased architectural detail visibility */
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .hero-video {
+        display: none !important;
+    }
+    .hero-video-container {
+        background-image: url('../assets/images/hero-poster.jpg') !important;
+    }
 }
 
 .hero-overlay {

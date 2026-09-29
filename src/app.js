@@ -44,7 +44,29 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 12. Global Scroll Locking for Active Modals/Drawers
     initModalScrollLock();
+
+    // 13. Hero Video Fallback
+    initHeroVideoFallback();
 });
+
+/* ==========================================================================
+   0. HERO VIDEO FALLBACK (Poster & Reduced Motion)
+   ========================================================================== */
+function initHeroVideoFallback() {
+    const video = document.querySelector('.hero-video');
+    const container = document.querySelector('.hero-video-container');
+    if (!video || !container) return;
+
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        video.pause();
+        container.classList.add('poster-fallback');
+    }
+
+    video.addEventListener('error', () => {
+        container.classList.add('poster-fallback');
+        video.style.display = 'none';
+    });
+}
 
 /* ==========================================================================
    1. PRELOADER
