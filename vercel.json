@@ -1,0 +1,30 @@
+{
+  "cleanUrls": true,
+  "rewrites": [
+    { "source": "/", "destination": "/src/pages/index.html" },
+    { "source": "/index.html", "destination": "/src/pages/index.html" },
+    { "source": "/properties", "destination": "/src/pages/properties.html" },
+    { "source": "/properties.html", "destination": "/src/pages/properties.html" },
+    { "source": "/property", "destination": "/src/pages/property.html" },
+    { "source": "/property.html", "destination": "/src/pages/property.html" },
+    { "source": "/about", "destination": "/src/pages/about.html" },
+    { "source": "/about.html", "destination": "/src/pages/about.html" },
+    { "source": "/agents", "destination": "/src/pages/agents.html" },
+    { "source": "/agents.html", "destination": "/src/pages/agents.html" },
+    { "source": "/blog", "destination": "/src/pages/blog.html" },
+    { "source": "/blog.html", "destination": "/src/pages/blog.html" },
+    { "source": "/contact", "destination": "/src/pages/contact.html" },
+    { "source": "/contact.html", "destination": "/src/pages/contact.html" },
+    { "source": "/dashboard", "destination": "/src/pages/dashboard.html" },
+    { "source": "/dashboard.html", "destination": "/src/pages/dashboard.html" },
+    { "source": "/submit-property", "destination": "/src/pages/submit-property.html" },
+    { "source": "/submit-property.html", "destination": "/src/pages/submit-property.html" },
+    { "source": "/privacy", "destination": "/src/pages/privacy.html" },
+    { "source": "/privacy.html", "destination": "/src/pages/privacy.html" },
+    { "source": "/terms", "destination": "/src/pages/terms.html" },
+    { "source": "/terms.html", "destination": "/src/pages/terms.html" },
+    { "source": "/styles/:match*", "destination": "/src/styles/:match*" },
+    { "source": "/assets/:match*", "destination": "/src/assets/:match*" },
+    { "source": "/:file((?!api).*\\.js)", "destination": "/src/:file" }
+  ]
+}
