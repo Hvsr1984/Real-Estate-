@@ -10,6 +10,7 @@ html {
     scroll-behavior: initial; /* Lenis handles smooth scrolling, we disable native scroll-behavior */
     font-size: 16px;
     -webkit-text-size-adjust: 100%;
+    overflow-x: hidden;
 }
 
 body {

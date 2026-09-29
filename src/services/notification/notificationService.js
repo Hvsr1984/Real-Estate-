@@ -3,7 +3,7 @@
 import { databaseService } from '../databaseService.js';
 import { NotificationRepository } from '../../database/repositories/NotificationRepository.js';
 import { eventBus } from '../../core/eventBus.js';
-import { showToast } from '../app.js';
+import { showToast } from '../../app.js';
 
 export class NotificationService {
     constructor() {
