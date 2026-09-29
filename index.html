@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>LuxeHaven | Exclusive Luxury Residences</title>
-    <link rel="icon" type="image/svg+xml" href="src/assets/images/favicon.svg">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
     <!-- Open Graph / LinkedIn / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://luxehaven-seven.vercel.app/">
@@ -175,7 +175,7 @@
                     <label>Location</label>
                     <div class="search-field-wrapper">
                         <i class="fa-solid fa-location-dot"></i>
-                        <select id="search-location-select">
+                        <select id="search-location-select" aria-label="Location">
                             <option value="">All Cities</option>
                             <option value="Los Angeles">Los Angeles</option>
                             <option value="Miami">Miami</option>
@@ -188,7 +188,7 @@
                     <label>Property Type</label>
                     <div class="search-field-wrapper">
                         <i class="fa-solid fa-house-chimney"></i>
-                        <select id="search-type-select">
+                        <select id="search-type-select" aria-label="Property Type">
                             <option value="">All Types</option>
                             <option value="Villa">Villa</option>
                             <option value="Apartment">Apartment</option>
@@ -200,7 +200,7 @@
                     <label>Budget Limit</label>
                     <div class="search-field-wrapper">
                         <i class="fa-solid fa-tags"></i>
-                        <select id="search-price-select">
+                        <select id="search-price-select" aria-label="Price Range">
                             <option value="">No Limit</option>
                             <option value="5000000">Under $5M</option>
                             <option value="10000000">Under $10M</option>
@@ -212,7 +212,7 @@
                     <label>Bedrooms</label>
                     <div class="search-field-wrapper">
                         <i class="fa-solid fa-bed"></i>
-                        <select id="search-beds-select">
+                        <select id="search-beds-select" aria-label="Bedrooms">
                             <option value="">Any</option>
                             <option value="3">3+ Beds</option>
                             <option value="4">4+ Beds</option>
@@ -325,7 +325,7 @@
         </div>
         <div class="chat-input-wrapper">
             <input type="text" id="chat-input-field" placeholder="Ask LuxeBot...">
-            <button class="chat-send-btn"><i class="fa-solid fa-paper-plane"></i></button>
+            <button class="chat-send-btn" aria-label="Send message"><i class="fa-solid fa-paper-plane"></i></button>
         </div>
     </div>
 
@@ -422,6 +422,8 @@
 
 </body>
 </html>
+
+
 
 
 
